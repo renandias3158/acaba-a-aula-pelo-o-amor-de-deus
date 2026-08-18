@@ -2,7 +2,7 @@
 
 Protótipo **baixo nível** para o projeto 
 
-##Integrantes
+## Integrantes
 ```
 - João Guilherme Lopes Fonseca
 - Matheus Henrique Araujo Miranda
