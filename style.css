@@ -205,24 +205,25 @@ pre,
   padding:15px;
   border-radius:12px;
 
-  /* altura máxima antes de aparecer o scroll */
+  /* ALTURA FIXA */
+  height:420px;
   max-height:420px;
 
-  /* scroll vertical e horizontal */
-  overflow-y:auto;
+  /* SCROLL */
+  overflow-y:scroll;
   overflow-x:auto;
 
-  /* permite quebrar linhas muito grandes */
+  /* texto */
   white-space:pre-wrap;
   overflow-wrap:anywhere;
   word-break:break-word;
 
-  /* evita que o pre aumente o tamanho da página */
+  /* largura */
   width:100%;
   max-width:100%;
 
-  /* melhora a experiência de rolagem */
-  scrollbar-width:auto;
+  /* evita problemas no layout */
+  margin:0;
 }
 
 /* =========================================================
