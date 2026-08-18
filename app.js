@@ -74,7 +74,7 @@ async function gemini(prompt){
 function resultText(text){
   return `
     <div class="box">
-      <pre class="ai-response">${esc(text)}</pre>
+      <div class="ai-response">${esc(text)}</div>
     </div>
   `;
 }
