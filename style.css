@@ -23,3 +23,32 @@ pre{background:#0b1220;color:#dbeafe;padding:15px;border-radius:12px;overflow:au
 .note{color:var(--muted)}
 .check{display:flex;gap:8px;align-items:center}.check input{width:auto}
 @media(max-width:700px){.top{display:block}.status{margin-top:14px;display:inline-block}.two,.kpis{grid-template-columns:1fr}}
+/* Resposta da IA com rolagem interna */
+.ai-response{
+  max-height:420px;
+  overflow-y:auto;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  scrollbar-width:auto;
+}
+
+/* Barra de rolagem para Chrome / Edge */
+.ai-response::-webkit-scrollbar{
+  width:12px;
+  height:12px;
+}
+
+.ai-response::-webkit-scrollbar-track{
+  background:#111827;
+}
+
+.ai-response::-webkit-scrollbar-thumb{
+  background:#64748b;
+  border-radius:8px;
+}
+
+.ai-response::-webkit-scrollbar-thumb:hover{
+  background:#94a3b8;
+}
