@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>IFPE Career AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <span class="tag">PROTÓTIPO • IFPE</span>
+    <h1>Career AI</h1>
+    <p>Formação → competências → entrevista → carreira.</p>
+  </div>
+  <div class="status" id="status">Gemini: não configurado</div>
+</header>
+
+<main>
+  <section class="settings panel">
+    <h2>Configuração</h2>
+    <div class="grid two">
+      <label>
+        Chave Gemini
+        <input id="apiKey" type="password" placeholder="Cole sua API key aqui">
+      </label>
+      <label>
+        Modelo
+        <input id="model" value="gemini-3.6-flash">
+      </label>
+    </div>
+    <div class="actions">
+      <button onclick="saveConfig()">Salvar nesta sessão</button>
+      <button class="secondary" onclick="clearConfig()">Limpar</button>
+    </div>
+    <small>Para GitHub Pages, a chave não é colocada no código nem no repositório.</small>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" data-target="curadoria">01 · Curadoria</button>
+    <button class="tab" data-target="coletiva">02 · Inteligência coletiva</button>
+    <button class="tab" data-target="entrevista">03 · Entrevista</button>
+    <button class="tab" data-target="egressos">04 · Egressos</button>
+  </nav>
+
+  <section id="curadoria" class="screen active">
+    <div class="panel">
+      <h2>Curadoria de Termos</h2>
+      <p>Transforme um projeto acadêmico em evidências profissionais.</p>
+      <label>Projeto
+        <textarea id="projeto" rows="6" placeholder="Ex.: desenvolvi um sistema de estoque em Java com MySQL..."></textarea>
+      </label>
+      <label>Tecnologias
+        <input id="tecnologias" placeholder="Java, MySQL, Git">
+      </label>
+      <label>Vaga-alvo <span class="muted">(opcional)</span>
+        <textarea id="vagaCuradoria" rows="5"></textarea>
+      </label>
+      <button class="primary" onclick="runCuradoria()">Analisar projeto</button>
+      <div id="curadoriaResult" class="result"></div>
+    </div>
+  </section>
+
+  <section id="coletiva" class="screen">
+    <div class="panel">
+      <h2>Inteligência Coletiva</h2>
+      <p>Converta relatos de processos seletivos em conhecimento reutilizável.</p>
+      <label>Cargo
+        <input id="cargoColetiva" placeholder="Desenvolvedor Júnior">
+      </label>
+      <label>Relato
+        <textarea id="relatoColetiva" rows="8" placeholder="O processo teve teste técnico, entrevista com RH..."></textarea>
+      </label>
+      <button class="primary" onclick="runColetiva()">Extrair padrões</button>
+      <div id="coletivaResult" class="result"></div>
+    </div>
+  </section>
+
+  <section id="entrevista" class="screen">
+    <div class="panel">
+      <h2>Destrave da Entrevista</h2>
+      <label>Texto da vaga
+        <textarea id="vagaEntrevista" rows="9"></textarea>
+      </label>
+      <button class="primary" onclick="generateInterview()">Montar preparação</button>
+      <div id="entrevistaResult" class="result"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Avaliar uma resposta</h3>
+      <label>Pergunta
+        <input id="pergunta" placeholder="Conte sobre um projeto que você desenvolveu.">
+      </label>
+      <label>Sua resposta
+        <textarea id="resposta" rows="7"></textarea>
+      </label>
+      <button class="primary" onclick="evaluateAnswer()">Avaliar resposta</button>
+      <div id="avaliacaoResult" class="result"></div>
+    </div>
+  </section>
+
+  <section id="egressos" class="screen">
+    <div class="panel">
+      <h2>Acompanhamento de Egressos</h2>
+      <p>Versão de protótipo: os dados ficam somente no navegador, via localStorage.</p>
+      <div class="grid two">
+        <label>Nome<input id="nomeEgresso"></label>
+        <label>Curso<input id="cursoEgresso"></label>
+        <label>Ano de formação<input id="anoEgresso" type="number"></label>
+        <label>Cargo<input id="cargoEgresso"></label>
+        <label>Empresa<input id="empresaEgresso"></label>
+        <label>Área<input id="areaEgresso"></label>
+        <label>Tecnologias<input id="techEgresso" placeholder="Java, SQL, Python"></label>
+        <label>Meses até o primeiro emprego<input id="tempoEgresso" type="number" step="0.1"></label>
+      </div>
+      <label class="check"><input id="areaCheck" type="checkbox"> Trabalha na área de formação</label>
+      <div class="actions">
+        <button class="primary" onclick="saveAlumni()">Cadastrar egresso</button>
+        <button class="secondary" onclick="renderDashboard()">Atualizar painel</button>
+      </div>
+    </div>
+    <div id="dashboard" class="dashboard"></div>
+  </section>
+
+  <section class="panel note">
+    <strong>Arquitetura do protótipo</strong>
+    <pre>GitHub Pages
+   ├── HTML
+   ├── CSS
+   ├── JavaScript
+   ├── localStorage
+   └── Gemini REST API</pre>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
