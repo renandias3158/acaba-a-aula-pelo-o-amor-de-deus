@@ -72,7 +72,11 @@ async function gemini(prompt){
 }
 
 function resultText(text){
-  return `<div class="box"><pre>${esc(text)}</pre></div>`;
+  return `
+    <div class="box">
+      <pre class="ai-response">${esc(text)}</pre>
+    </div>
+  `;
 }
 
 async function runCuradoria(){
