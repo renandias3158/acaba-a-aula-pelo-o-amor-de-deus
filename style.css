@@ -1,4 +1,3 @@
-
 :root{
   --bg:#f6f7fb;
   --card:#fff;
@@ -7,46 +6,79 @@
   --line:#d9dee8;
   --primary:#2457e6;
   --soft:#eef3ff;
+  --danger:#b42318;
+  --danger-bg:#fef3f2;
+  --warning:#92400e;
+  --warning-bg:#fffbeb;
 }
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
 
 *{
   box-sizing:border-box;
 }
+
 
 html{
   overflow-y:auto;
   overflow-x:hidden;
 }
 
+
 body{
   margin:0;
   min-height:100vh;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
   background:var(--bg);
   color:var(--text);
+
   overflow-y:auto;
   overflow-x:hidden;
 }
 
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .top{
-  padding:32px max(20px,calc((100% - 1050px)/2));
+  padding:
+    32px
+    max(20px,calc((100% - 1050px)/2));
+
   background:#111827;
   color:white;
+
   display:flex;
   justify-content:space-between;
   gap:20px;
   align-items:flex-start;
 }
 
+
 .top h1{
   margin:4px 0;
   font-size:38px;
 }
 
+
 .top p{
   margin:0;
   color:#cbd5e1;
 }
+
 
 .tag{
   font-size:12px;
@@ -54,13 +86,20 @@ body{
   color:#93c5fd;
 }
 
+
 .status{
   background:#1f2937;
   border:1px solid #374151;
   padding:9px 12px;
   border-radius:999px;
   font-size:13px;
+  white-space:nowrap;
 }
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 main{
   max-width:1050px;
@@ -68,23 +107,47 @@ main{
   padding:0 16px;
 }
 
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
 .panel{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
   padding:22px;
   margin-bottom:18px;
-  box-shadow:0 6px 22px #10182808;
+
+  box-shadow:
+    0 6px 22px #10182808;
+
+  min-width:0;
 }
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
 
 .grid{
   display:grid;
   gap:14px;
 }
 
+
 .two{
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
 }
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
 
 label{
   display:block;
@@ -93,45 +156,95 @@ label{
   margin:12px 0;
 }
 
+
 .muted,
 small{
   color:var(--muted);
   font-weight:400;
 }
 
+
 input,
 textarea{
   width:100%;
   margin-top:7px;
+
   padding:11px 12px;
+
   border:1px solid var(--line);
   border-radius:10px;
+
   font:inherit;
   background:white;
+
+  color:var(--text);
+
+  max-width:100%;
 }
+
+
+input:focus,
+textarea:focus{
+  outline:none;
+
+  border-color:var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(36,87,230,.12);
+}
+
 
 textarea{
   resize:vertical;
+  min-height:80px;
 }
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 button{
   border:0;
   border-radius:10px;
+
   padding:10px 14px;
+
   font:inherit;
   font-weight:700;
+
   cursor:pointer;
+
+  transition:
+    opacity .15s ease,
+    transform .15s ease;
 }
+
+
+button:hover{
+  transform:translateY(-1px);
+}
+
+
+button:disabled{
+  cursor:not-allowed;
+  opacity:.6;
+  transform:none;
+}
+
 
 .primary{
   background:var(--primary);
   color:white;
 }
 
+
 .secondary{
   background:#eef1f6;
   color:#334155;
 }
+
 
 .actions{
   display:flex;
@@ -140,6 +253,11 @@ button{
   margin-top:12px;
 }
 
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
 .tabs{
   display:flex;
   gap:8px;
@@ -147,45 +265,213 @@ button{
   margin-bottom:18px;
 }
 
+
 .tab{
   background:#e8edf7;
   color:#334155;
 }
+
 
 .tab.active{
   background:#111827;
   color:#fff;
 }
 
+
+/* =========================================================
+   TELAS
+   ========================================================= */
+
 .screen{
   display:none;
 }
+
 
 .screen.active{
   display:block;
 }
 
+
+/* =========================================================
+   RESULTADOS
+   ========================================================= */
+
 .result{
   margin-top:18px;
+  width:100%;
+  min-width:0;
 }
+
 
 .box{
   background:#f8fafc;
+
   border:1px solid var(--line);
+
   border-radius:12px;
+
   padding:15px;
+
   margin-top:10px;
+
+  width:100%;
+  max-width:100%;
+
+  min-width:0;
 }
+
 
 .box h4{
   margin:0 0 8px;
 }
+
+
+.loading-box{
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   RESPOSTA DA IA
+   ========================================================= */
+
+/*
+ * IMPORTANTE:
+ *
+ * A resposta da IA agora é:
+ *
+ * .ai-box
+ *   └── .ai-response
+ *         └── pre
+ *
+ * O texto não é inserido como HTML.
+ * O app usa esc() para proteger a página.
+ *
+ * A altura NÃO é mais limitada a 420px.
+ */
+
+.ai-box{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+}
+
+
+.ai-response{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+
+  background:#0b1220;
+  color:#dbeafe;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  overflow-x:auto;
+  overflow-y:visible;
+
+  box-sizing:border-box;
+}
+
+
+.ai-response pre{
+  margin:0;
+
+  width:100%;
+  max-width:100%;
+
+  background:transparent;
+  color:inherit;
+
+  padding:0;
+
+  border-radius:0;
+
+  white-space:pre-wrap;
+
+  overflow:visible;
+
+  overflow-wrap:anywhere;
+  word-break:break-word;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size:14px;
+  line-height:1.6;
+
+  box-sizing:border-box;
+}
+
+
+/*
+ * Permite que conteúdos muito largos,
+ * como URLs ou sequências sem espaços,
+ * tenham uma rolagem horizontal controlada.
+ */
+
+.ai-response{
+  overflow-wrap:anywhere;
+}
+
+
+.ai-response pre{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+
+/* =========================================================
+   AVISOS DA IA
+   ========================================================= */
+
+.ai-warning{
+  margin-top:10px;
+
+  padding:10px 12px;
+
+  border-radius:10px;
+
+  background:var(--warning-bg);
+  color:var(--warning);
+
+  border:1px solid #fde68a;
+
+  font-size:13px;
+  line-height:1.5;
+}
+
+
+.ai-error{
+  border-color:#f3b5af;
+  background:var(--danger-bg);
+}
+
+
+.ai-error .ai-response{
+  background:#3b0b0b;
+  color:#fee2e2;
+}
+
+
+/* =========================================================
+   CHIPS
+   ========================================================= */
 
 .chips{
   display:flex;
   gap:7px;
   flex-wrap:wrap;
 }
+
 
 .chip{
   padding:6px 9px;
@@ -194,115 +480,86 @@ button{
   font-size:13px;
 }
 
-/* =========================================================
-   CAIXA DE RESPOSTA / CÓDIGO
-   ========================================================= */
-
-pre,
-.ai-response{
-  background:#0b1220;
-  color:#dbeafe;
-
-  padding:15px;
-  border-radius:12px;
-
-  width:100%;
-  max-width:100%;
-
-  height:420px;
-  max-height:420px;
-
-  overflow-y:auto;
-  overflow-x:hidden;
-
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  word-break:break-word;
-
-  font-family:monospace;
-  font-size:14px;
-  line-height:1.5;
-
-  box-sizing:border-box;
-
-  scrollbar-width:auto;
-  scrollbar-color:#64748b #111827;
-}
-.ai-response::-webkit-scrollbar{
-  width:12px;
-}
-
-.ai-response::-webkit-scrollbar-track{
-  background:#111827;
-  border-radius:8px;
-}
-
-.ai-response::-webkit-scrollbar-thumb{
-  background:#64748b;
-  border-radius:8px;
-  border:2px solid #111827;
-}
-
-.ai-response::-webkit-scrollbar-thumb:hover{
-  background:#94a3b8;
-}
 
 /* =========================================================
-   BARRA DE ROLAGEM - CHROME / EDGE / SAFARI
+   DASHBOARD
    ========================================================= */
-
-pre::-webkit-scrollbar,
-.ai-response::-webkit-scrollbar{
-  width:12px;
-  height:12px;
-}
-
-pre::-webkit-scrollbar-track,
-.ai-response::-webkit-scrollbar-track{
-  background:#111827;
-  border-radius:8px;
-}
-
-pre::-webkit-scrollbar-thumb,
-.ai-response::-webkit-scrollbar-thumb{
-  background:#64748b;
-  border-radius:8px;
-  border:2px solid #111827;
-}
-
-pre::-webkit-scrollbar-thumb:hover,
-.ai-response::-webkit-scrollbar-thumb:hover{
-  background:#94a3b8;
-}
-
-pre::-webkit-scrollbar-corner,
-.ai-response::-webkit-scrollbar-corner{
-  background:#111827;
-}
-
-/* ========================================================= */
 
 .kpis{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:12px;
 }
 
+
 .kpi{
   background:#f8fafc;
+
   border:1px solid var(--line);
+
   border-radius:14px;
+
   padding:15px;
+
+  min-width:0;
 }
+
 
 .kpi strong{
   display:block;
   font-size:28px;
 }
 
+
+.ranking-item{
+  padding:5px 0;
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   NOTA
+   ========================================================= */
+
 .note{
   color:var(--muted);
 }
+
+
+.note pre{
+  margin-top:12px;
+
+  width:100%;
+  max-width:100%;
+
+  min-width:0;
+
+  background:#0b1220;
+  color:#dbeafe;
+
+  padding:15px;
+
+  border-radius:12px;
+
+  white-space:pre-wrap;
+
+  overflow-x:auto;
+  overflow-y:auto;
+
+  overflow-wrap:anywhere;
+  word-break:break-word;
+
+  font-family:monospace;
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
 
 .check{
   display:flex;
@@ -310,9 +567,55 @@ pre::-webkit-scrollbar-corner,
   align-items:center;
 }
 
+
 .check input{
   width:auto;
+  margin:0;
 }
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.ai-response::-webkit-scrollbar,
+.note pre::-webkit-scrollbar{
+  width:12px;
+  height:12px;
+}
+
+
+.ai-response::-webkit-scrollbar-track,
+.note pre::-webkit-scrollbar-track{
+  background:#111827;
+  border-radius:8px;
+}
+
+
+.ai-response::-webkit-scrollbar-thumb,
+.note pre::-webkit-scrollbar-thumb{
+  background:#64748b;
+  border-radius:8px;
+
+  border:2px solid #111827;
+}
+
+
+.ai-response::-webkit-scrollbar-thumb:hover,
+.note pre::-webkit-scrollbar-thumb:hover{
+  background:#94a3b8;
+}
+
+
+.ai-response::-webkit-scrollbar-corner,
+.note pre::-webkit-scrollbar-corner{
+  background:#111827;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
 
 @media(max-width:700px){
 
@@ -320,26 +623,42 @@ pre::-webkit-scrollbar-corner,
     display:block;
   }
 
+
   .status{
     margin-top:14px;
     display:inline-block;
+    white-space:normal;
   }
+
 
   .two,
   .kpis{
     grid-template-columns:1fr;
   }
 
+
   main{
     padding:0 10px;
   }
+
 
   .panel{
     padding:16px;
   }
 
-  pre,
-  .ai-response{
-    max-height:420px;
+
+  .top h1{
+    font-size:32px;
   }
+
+
+  .ai-response{
+    padding:12px;
+  }
+
+
+  .ai-response pre{
+    font-size:13px;
+  }
+
 }
